@@ -109,12 +109,6 @@ const HomeScreen: React.FC = () => {
 
     schedulePushNotification();
 
-    // (() => {
-    //   setInterval(() => {
-    //     schedulePushNotification();
-    //   }, 10000);
-    // })();
-
     notificationListener.current =
       Notifications.addNotificationReceivedListener((notification) => {
         setNotification(notification);

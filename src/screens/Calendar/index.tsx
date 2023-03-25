@@ -30,13 +30,6 @@ const CalendarScreen: React.FC = () => {
     setSelected(day.dateString);
   };
 
-  //   create a function that receive the data and push item in array of dates
-  const handleDate = (date) => {
-    const newDate = date;
-    const newDates = [...dates, newDate];
-    setDates(newDates);
-  };
-
   return (
     <>
       <SafeAreaView
