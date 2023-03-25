@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "./screens/Home";
 import HomeScreen from "./screens/Home";
 import Calendar from "./screens/Calendar";
+import CalendarScreen from "./screens/Calendar";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -15,7 +16,7 @@ const MyTabs = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{
           tabBarLabel: "Home",
@@ -31,7 +32,7 @@ const MyTabs = () => {
 
       <Tab.Screen
         name="Calendar"
-        component={Calendar}
+        component={CalendarScreen}
         options={{
           tabBarLabel: "Calendar",
           tabBarLabelStyle: {
