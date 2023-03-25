@@ -1,11 +1,43 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { SafeAreaView } from "react-native";
 import { Box } from "../../components/Spacing";
-import { Avatar, Divider } from "react-native-paper";
+import { Avatar, Button, Divider } from "react-native-paper";
 import { Title } from "../../components/Texts";
 import PacientCard from "../../components/PacientCard";
 
+import { LogBox } from "react-native";
+
+import * as Notifications from "expo-notifications";
+import * as Device from "expo-device";
+import { Platform } from "react-native";
+
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    shouldShowAlert: true,
+    shouldPlaySound: false,
+    shouldSetBadge: false,
+  }),
+});
+
+// Notifications.scheduleNotificationAsync({
+//   content: {
+//     title: "Oba, voce tem uma nova consulta",
+//     body: "Uma consulta foi marcada para as 10:00 do dia 10/10/2021",
+//   },
+//   trigger: null,
+// });
+
 const HomeScreen: React.FC = () => {
+  // Ignore log notification by message
+  LogBox.ignoreLogs(["Warning: ..."]);
+
+  //Ignore all log notifications
+  LogBox.ignoreAllLogs();
+
+  const [expoPushToken, setExpoPushToken] = useState("");
+  const [notification, setNotification] = useState(false);
+  const notificationListener = useRef();
+  const responseListener = useRef();
   const patients = [
     {
       id: 1,
@@ -26,6 +58,80 @@ const HomeScreen: React.FC = () => {
       phone: "+5511971801555",
     },
   ];
+
+  async function schedulePushNotification() {
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "Oba, voce tem uma nova consulta",
+        body: "Uma consulta foi marcada para as 10:00 do dia 31/03/2021",
+      },
+      trigger: { seconds: 10 },
+    });
+  }
+
+  async function registerForPushNotificationsAsync() {
+    let token;
+
+    if (Platform.OS === "android") {
+      await Notifications.setNotificationChannelAsync("default", {
+        name: "default",
+        importance: Notifications.AndroidImportance.MAX,
+        vibrationPattern: [0, 250, 250, 250],
+        lightColor: "#FF231F7C",
+      });
+    }
+
+    if (Device.isDevice) {
+      const { status: existingStatus } =
+        await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
+      if (existingStatus !== "granted") {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
+      if (finalStatus !== "granted") {
+        alert("Failed to get push token for push notification!");
+        return;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(token);
+    } else {
+      alert("Must use physical device for Push Notifications");
+    }
+
+    return token;
+  }
+
+  useEffect(() => {
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token)
+    );
+
+    schedulePushNotification();
+
+    // (() => {
+    //   setInterval(() => {
+    //     schedulePushNotification();
+    //   }, 10000);
+    // })();
+
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(notification);
+      });
+
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        console.log(response);
+      });
+
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
 
   return (
     <>
@@ -51,6 +157,18 @@ const HomeScreen: React.FC = () => {
               <PacientCard patients={patients} />
             </Box>
           </Box>
+          <Button
+            style={{
+              position: "absolute",
+              bottom: 0,
+              right: 0,
+              margin: 20,
+            }}
+            title="Press to schedule a notification"
+            onPress={async () => {
+              await schedulePushNotification();
+            }}
+          />
         </Box>
       </SafeAreaView>
     </>
