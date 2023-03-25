@@ -1,13 +1,11 @@
 import React from "react";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "./screens/Home";
 import HomeScreen from "./screens/Home";
-import Calendar from "./screens/Calendar";
 import CalendarScreen from "./screens/Calendar";
+import Configurations from "./screens/Configurations";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -47,7 +45,7 @@ const MyTabs = () => {
 
       <Tab.Screen
         name="Configurations"
-        component={Home}
+        component={Configurations}
         options={{
           tabBarLabel: "Configurations",
           tabBarLabelStyle: {
