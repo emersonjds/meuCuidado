@@ -13,7 +13,7 @@ import {
     WidthProps,
     PositionProps,
 } from "styled-system";
-import Colors from "../Constants";
+import Colors from "../Contants";
 
 type BoxProps =
     | SpaceProps
