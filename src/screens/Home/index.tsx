@@ -5,7 +5,7 @@ import {Avatar, Divider} from 'react-native-paper';
 import {Title} from '../../components/Texts';
 import PacientCard from "../../components/PacientCard";
 
-const Home: React.FC = () => {
+const HomeScreen: React.FC = () => {
     return (
         <>
             <SafeAreaView>
@@ -52,4 +52,4 @@ const Home: React.FC = () => {
     )
 }
 
-export default Home;
+export default HomeScreen;
