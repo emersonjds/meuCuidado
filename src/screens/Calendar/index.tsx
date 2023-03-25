@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Title } from "../../components/Texts";
 import { Box } from "../../components/Spacing";
-import { Divider } from "react-native-paper";
+import { ActivityIndicator, Divider } from "react-native-paper";
 
 const CalendarScreen: React.FC = () => {
   const [selected, setSelected] = useState("");
@@ -24,10 +24,6 @@ const CalendarScreen: React.FC = () => {
       "Novembro",
       "Dezembro",
     ],
-  };
-
-  const onDayPress = (day) => {
-    setSelected(day.dateString);
   };
 
   return (

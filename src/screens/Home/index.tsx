@@ -151,7 +151,7 @@ const HomeScreen: React.FC = () => {
               <PacientCard patients={patients} />
             </Box>
           </Box>
-          <Button
+          {/* <Button
             style={{
               position: "absolute",
               bottom: 0,
@@ -162,7 +162,7 @@ const HomeScreen: React.FC = () => {
             onPress={async () => {
               await schedulePushNotification();
             }}
-          />
+          /> */}
         </Box>
       </SafeAreaView>
     </>
