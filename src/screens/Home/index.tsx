@@ -1,10 +1,9 @@
 import React from 'react';
-import { SafeAreaView, View } from 'react-native';
-import { Box } from '../../components/Spacing';
-import { Avatar, Divider } from 'react-native-paper';
-import { Title } from '../../components/Texts';
-import { Ionicons } from '@expo/vector-icons';
-
+import {SafeAreaView} from 'react-native';
+import {Box} from '../../components/Spacing';
+import {Avatar, Divider} from 'react-native-paper';
+import {Title} from '../../components/Texts';
+import PacientCard from "../../components/PacientCard";
 
 const Home: React.FC = () => {
     return (
@@ -12,12 +11,12 @@ const Home: React.FC = () => {
             <SafeAreaView>
                 <Box height="100%" width="100%" backgroundColor="white">
                     <Box mt={10}
-                        ml={10}
-                        flexDirection="row"
-                        alignItems="center"
+                         ml={10}
+                         flexDirection="row"
+                         alignItems="center"
                     >
                         <Box>
-                            <Avatar.Image size={50} source={require('../../assets/terapeuta.png')} />
+                            <Avatar.Image size={50} source={require('../../assets/terapeuta.png')}/>
                         </Box>
                         <Box
                             ml={10}
@@ -31,7 +30,7 @@ const Home: React.FC = () => {
                         mt={10}
                         ml={10}
                     >
-                        <Divider />
+                        <Divider/>
                     </Box>
                     <Box
                         mt={10}
@@ -40,6 +39,12 @@ const Home: React.FC = () => {
                         <Title>
                             Atendimentos do Dia
                         </Title>
+                        <Box
+                            pt={10}
+                        >
+                            <PacientCard />
+                        </Box>
+
                     </Box>
                 </Box>
             </SafeAreaView>
