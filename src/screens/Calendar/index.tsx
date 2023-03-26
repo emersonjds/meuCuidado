@@ -29,22 +29,6 @@ const CalendarScreen: React.FC = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  const ArrayOfAtendimentos = [
-    {
-      id: 1,
-      name: "Marcela Pereira",
-      time: "10:00",
-      phone: "+5511971801555",
-    },
-    {
-      id: 2,
-      name: "Marcela Pereira",
-      time: "10:00",
-      phone: "+5511971801555",
-    },
-  ];
-
-  // create and object for use in markedDates
   const markedDates = {
     "2023-03-27": {
       selected: true,
