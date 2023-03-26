@@ -60,7 +60,7 @@ const HomeScreen: React.FC = () => {
         title: "Oba, voce tem uma nova consulta",
         body: "Uma consulta foi marcada para as 10:00 do dia 31/03/2021",
       },
-      trigger: { seconds: 10 },
+      trigger: { seconds: 5 },
     });
   }
 
@@ -97,30 +97,30 @@ const HomeScreen: React.FC = () => {
     return token;
   }
 
-  // useEffect(() => {
-  //   registerForPushNotificationsAsync().then((token) =>
-  //     setExpoPushToken(token)
-  //   );
+  useEffect(() => {
+    registerForPushNotificationsAsync().then((token) =>
+      setExpoPushToken(token)
+    );
 
-  //   schedulePushNotification();
+    schedulePushNotification();
 
-  //   notificationListener.current =
-  //     Notifications.addNotificationReceivedListener((notification) => {
-  //       setNotification(notification);
-  //     });
+    notificationListener.current =
+      Notifications.addNotificationReceivedListener((notification) => {
+        setNotification(notification);
+      });
 
-  //   responseListener.current =
-  //     Notifications.addNotificationResponseReceivedListener((response) => {
-  //       navigation.navigate("Proposes");
-  //     });
+    responseListener.current =
+      Notifications.addNotificationResponseReceivedListener((response) => {
+        navigation.navigate("Proposes");
+      });
 
-  //   return () => {
-  //     Notifications.removeNotificationSubscription(
-  //       notificationListener.current
-  //     );
-  //     Notifications.removeNotificationSubscription(responseListener.current);
-  //   };
-  // }, []);
+    return () => {
+      Notifications.removeNotificationSubscription(
+        notificationListener.current
+      );
+      Notifications.removeNotificationSubscription(responseListener.current);
+    };
+  }, []);
 
   return (
     <>
