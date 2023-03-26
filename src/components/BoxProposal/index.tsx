@@ -1,8 +1,6 @@
 import React, { FC } from "react";
-import { View } from "react-native";
 import { Box } from "../Spacing";
 import Colors from "../Contants";
-import { Title } from "../Texts";
 import * as S from "./styles";
 
 type BoxProposalProps = {
