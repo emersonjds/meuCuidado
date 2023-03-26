@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Text, View } from "react-native";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Title } from "../../components/Texts";
 import { Box } from "../../components/Spacing";
-import { ActivityIndicator, Divider } from "react-native-paper";
+import { Divider } from "react-native-paper";
 import { Alert, Modal, StyleSheet, Pressable } from "react-native";
 
 const CalendarScreen: React.FC = () => {
