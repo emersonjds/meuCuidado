@@ -2,6 +2,8 @@ import React, { FC } from "react";
 import { Box } from "../Spacing";
 import Colors from "../Contants";
 import * as S from "./styles";
+import { Subtitle, Title } from "../Texts";
+import { Button } from "react-native-paper";
 
 type BoxProposalProps = {
   date: string;
@@ -17,13 +19,15 @@ const BoxProposal: FC<BoxProposalProps> = ({ date, time, name, phone }) => {
       height={120}
       borderWidth={1}
       borderRadius={10}
-      p={10}
+      p={20}
       borderColor={Colors.light_gray}
-      justifyContent="center"
+      justifyContent="space-between"
+      flexDirection="row"
+      alignItems="center"
     >
       <Box
         width="20%"
-        height="80%"
+        height="100%"
         alignItems="center"
         justifyContent="center"
         bg={Colors.light_blue}
@@ -31,7 +35,33 @@ const BoxProposal: FC<BoxProposalProps> = ({ date, time, name, phone }) => {
           borderRadius: 10,
         }}
       >
-        <S.TitleDate>27</S.TitleDate>
+        <S.TitleDate>{date}</S.TitleDate>
+        <Subtitle>Mar</Subtitle>
+      </Box>
+      <Box width="45%" p={10}>
+        <Title>Nova consulta</Title>
+        <Subtitle>Horario: {time}</Subtitle>
+        <Subtitle>Nome: {name}</Subtitle>
+        <Subtitle> {phone}</Subtitle>
+      </Box>
+      <Box>
+        <Button
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+          buttonColor="#2ecc71"
+          style={{
+            marginBottom: 10,
+          }}
+        >
+          Aceitar
+        </Button>
+        <Button
+          mode="contained"
+          onPress={() => console.log("Pressed")}
+          buttonColor="#e74c3c"
+        >
+          Rejeitar
+        </Button>
       </Box>
     </Box>
   );
