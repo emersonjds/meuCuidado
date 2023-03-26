@@ -129,7 +129,7 @@ const CalendarScreen: React.FC = () => {
                     style={[styles.button, styles.buttonClose]}
                     onPress={() => setModalVisible(!modalVisible)}
                   >
-                    <Text style={styles.textStyle}>Hide Modal</Text>
+                    <Text style={styles.textStyle}>Fechar</Text>
                   </Pressable>
                 </View>
               </View>

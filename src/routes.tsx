@@ -7,6 +7,7 @@ import HomeScreen from "./screens/Home";
 import CalendarScreen from "./screens/Calendar";
 import Configurations from "./screens/Configurations";
 import Proposal from "./screens/Proposal";
+import Wallet from "./screens/Wallet";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -63,13 +64,13 @@ const MyTabs = () => {
         name="Wallet"
         component={Wallet}
         options={{
-          tabBarLabel: "Wallet",
+          tabBarLabel: "Carteira",
           tabBarLabelStyle: {
             color: "#000",
           },
           headerShown: false,
           tabBarIcon: ({ color }) => (
-            <AntDesign name="setting" size={24} color="black" />
+            <AntDesign name="wallet" size={24} color="black" />
           ),
         }}
       />

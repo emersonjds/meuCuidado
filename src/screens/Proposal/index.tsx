@@ -44,7 +44,7 @@ const Proposal: React.FC = () => {
         padding: 20,
       }}
     >
-      <Title>Consultas de Março</Title>
+      <Title>Solicitação de Consultas</Title>
 
       <Box mt={10} mb={10}>
         <Divider />
