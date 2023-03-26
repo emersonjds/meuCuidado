@@ -48,7 +48,7 @@ const PacientCard: React.FC<PacientCardProps> = ({ patients }) => {
               />
             </TouchableOpacity>
             <Box ml={10}>
-              <Subtitle>Entrar em Contato</Subtitle>
+              <Subtitle>Chamar via Whatsapp</Subtitle>
             </Box>
           </Box>
         </Box>
