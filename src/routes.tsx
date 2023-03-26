@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./screens/Home";
 import CalendarScreen from "./screens/Calendar";
 import Configurations from "./screens/Configurations";
+import Proposal from "./screens/Proposal";
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -39,6 +40,21 @@ const MyTabs = () => {
           headerShown: false,
           tabBarIcon: ({ color }) => (
             <AntDesign name="calendar" size={24} color="black" />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Proposes"
+        component={Proposal}
+        options={{
+          tabBarLabel: "Propostas",
+          tabBarLabelStyle: {
+            color: "#000",
+          },
+          headerShown: false,
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="filetext1" size={24} color="black" />
           ),
         }}
       />
