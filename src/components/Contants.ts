@@ -9,6 +9,7 @@ const Colors = {
     orange: '#e48e1e',
     dark_gray: '#434343',
     light_blue: '#9dd1cd',
+    light_gray: '#e6e6e6',
 }
 
 export default Colors;
