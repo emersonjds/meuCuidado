@@ -15,12 +15,13 @@ type BoxProposalProps = {
 const BoxProposal: FC<BoxProposalProps> = ({ date, time, name, phone }) => {
   return (
     <Box
+      mb={10}
       width="100%"
       height={120}
       borderWidth={1}
       borderRadius={10}
       p={20}
-      borderColor={Colors.light_gray}
+      borderColor={Colors.gray}
       justifyContent="space-between"
       flexDirection="row"
       alignItems="center"
@@ -55,11 +56,7 @@ const BoxProposal: FC<BoxProposalProps> = ({ date, time, name, phone }) => {
         >
           Aceitar
         </Button>
-        <Button
-          mode="contained"
-          onPress={() => console.log("Pressed")}
-          buttonColor="#e74c3c"
-        >
+        <Button mode="contained" onPress={() => console.log("Pressed")}>
           Rejeitar
         </Button>
       </Box>

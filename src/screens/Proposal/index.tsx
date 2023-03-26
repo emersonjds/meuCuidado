@@ -11,6 +11,33 @@ import BoxProposal from "../../components/BoxProposal";
 const Proposal: React.FC = () => {
   const navigation = useNavigation();
 
+  const propostals = [
+    {
+      date: "27",
+      time: "10:00",
+      name: "Caio Martins",
+      phone: "+5511971801555",
+    },
+    {
+      date: "27",
+      time: "13:00",
+      name: "Josefa Maria",
+      phone: "+5511971801555",
+    },
+    {
+      date: "27",
+      time: "14:00",
+      name: "Germania Souza",
+      phone: "+5511971801555",
+    },
+    {
+      date: "28",
+      time: "10:00",
+      name: "Claudio Souza",
+      phone: "+5511971801555",
+    },
+  ];
+
   return (
     <SafeAreaView
       style={{
@@ -28,12 +55,17 @@ const Proposal: React.FC = () => {
           height: "100%",
         }}
       >
-        <BoxProposal
-          date="27"
-          time="10:00"
-          name="Caio Martins"
-          phone="+5511971801555"
-        />
+        {propostals.map((item, index) => {
+          return (
+            <BoxProposal
+              key={index}
+              date={item.date}
+              time={item.time}
+              name={item.name}
+              phone={item.phone}
+            />
+          );
+        })}
       </ScrollView>
     </SafeAreaView>
   );

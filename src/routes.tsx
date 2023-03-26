@@ -60,10 +60,10 @@ const MyTabs = () => {
       />
 
       <Tab.Screen
-        name="Configurations"
-        component={Configurations}
+        name="Wallet"
+        component={Wallet}
         options={{
-          tabBarLabel: "Configurations",
+          tabBarLabel: "Wallet",
           tabBarLabelStyle: {
             color: "#000",
           },
