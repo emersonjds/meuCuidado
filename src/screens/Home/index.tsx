@@ -10,6 +10,7 @@ import { LogBox } from "react-native";
 import * as Notifications from "expo-notifications";
 import * as Device from "expo-device";
 import { Platform } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -19,15 +20,9 @@ Notifications.setNotificationHandler({
   }),
 });
 
-// Notifications.scheduleNotificationAsync({
-//   content: {
-//     title: "Oba, voce tem uma nova consulta",
-//     body: "Uma consulta foi marcada para as 10:00 do dia 10/10/2021",
-//   },
-//   trigger: null,
-// });
-
 const HomeScreen: React.FC = () => {
+  const navigation = useNavigation();
+
   // Ignore log notification by message
   LogBox.ignoreLogs(["Warning: ..."]);
 
@@ -116,7 +111,7 @@ const HomeScreen: React.FC = () => {
 
     responseListener.current =
       Notifications.addNotificationResponseReceivedListener((response) => {
-        console.log(response);
+        navigation.navigate("Proposes");
       });
 
     return () => {
